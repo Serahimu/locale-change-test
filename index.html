@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Locale Switch Test</title>
+  <script>
+    const translations = {
+      en: { greeting: "Hello World", switch: "Switch to Chinese" },
+      zh_tw: { greeting: "哈囉世界", switch: "切換到英文" }
+    };
+
+    let currentLang = 'en';
+
+    function updateText() {
+      document.getElementById('greeting').textContent = translations[currentLang].greeting;
+      document.getElementById('switch-btn').textContent = translations[currentLang].switch;
+      document.getElementById('lang-indicator').textContent = currentLang === 'en' ? 'English' : '繁體中文';
+    }
+
+    function switchLocale() {
+      currentLang = currentLang === 'en' ? 'zh_tw' : 'en';
+      updateText();
+    }
+
+    window.onload = updateText;
+  </script>
+</head>
+<body>
+  <h1 id="greeting"></h1>
+  <button id="switch-btn" onclick="switchLocale()"></button>
+  <p>Current language: <span id="lang-indicator"></span></p>
+</body>
+</html>
